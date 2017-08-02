@@ -1,20 +1,25 @@
 <h2 class='page-header'>Register</h2>
-<form (submit)='onRegisterSubmit()'>
+<form [formGroup]='rForm' (ngSubmit)='addPost(rForm.value)'>
   <div class="form-group">
-    <label>Name</label>
-    <input type='text' [(ngModel)]='name' name='name' class='form-control'>
+    <label>Enter your name</label>
+    <input type='text'  formControlName= 'name' name= 'name' class='form-control' placeholder='Name'>
   </div>
+    <div class = 'alert' *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched"> Required field</div>
   <div class="form-group">
-    <label>Username</label>
-    <input type='text' [(ngModel)]='username' name='username' class='form-control' required>
+    <label>Enter your username</label>
+    <input type='text'  formControlName= 'username'  name= 'username' class='form-control' placeholder='Username'>
   </div>
+      <div class = 'alert' *ngIf="!rForm.controls['username'].valid && rForm.controls['username'].touched"> Username must be 6 to 18 characters</div>
   <div class="form-group">
-    <label>Email</label>
-    <input type='email' [(ngModel)]='email' name='email' class='form-control' required>
+    <label>Enter your email address</label>
+    <input type='email'  formControlName= 'email'  name = 'email' class='form-control' placeholder='Email'>
   </div>
+  <div class = 'alert' *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched"> Invalid email address</div>
   <div class="form-group">
-    <label>Password</label>
-    <input type='password' [(ngModel)]='password' name='password' class='form-control' required>
+    <label> Enter a password</label>
+    <input type='password'  formControlName= 'password'  name='password' class='form-control' placeholder='Password'>
   </div>
-  <input type='submit' class='btn btn-primary' value='Submit'>
+    <div class = 'alert' *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched"> Password must have a minimum of 6 characters</div>
+    <br><br>
+  <input type='submit' class='btn btn-primary' value='Submit' [disabled] = '!rForm.valid' >
 </form>

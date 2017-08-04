@@ -17,7 +17,7 @@
   <div class = 'alert' *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched"> Invalid email address</div>
   <div class="form-group">
     <label> Enter a password</label>
-    <input type='password'  formControlName= 'password'  name='password' class='form-control' placeholder='Password'>
+    <input type='text'  formControlName= 'password'  name='password' class='form-control' placeholder='Password'>
   </div>
     <div class = 'alert' *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched"> Password must have a minimum of 6 characters</div>
     <br><br>

@@ -1,0 +1,34 @@
+<div class='widget-container' fxLayout='row' fxFlex="50">
+
+
+  <md-card fxFlex>
+    <input type='text' placeholder="Search" [(ngModel)]='searchTerms' />
+    <md-list>
+      <h3 md-subheader>Characters</h3>
+      
+      <md-list-item (click)='selectCharacter(character)'*ngFor="let character of gotCharacters |filter:searchTerms">
+        <img md-list-avatar src='{{character.url}}'>
+        <h4 md-line>{{character.name}}</h4>
+        <p md-line> {{character.email}} </p>
+        
+        <button md-mini-fab (click)='deleteCharacter(character)'><md-icon>delete</md-icon></button>
+      </md-list-item>
+      <md-divider></md-divider>
+    </md-list>
+  </md-card>
+
+</div>
+
+<div class='chart-container' fxFlex>
+  <md-card fxFlex>
+    <div class='header' fxLayout='row'>
+      <h1 fxFlex='80'> {{currentCharacter.name}}</h1>
+      <img md-card-md-image src='{{currentCharacter.url}}'>
+    </div>
+
+    <p> Email:</p>
+    <span>{{currentCharacter.email}}</span>
+    <p>Notes:</p>
+    <span>{{currentCharacter.notes}}</span>
+  </md-card>
+</div>
